@@ -13,9 +13,9 @@ body {
 
 img {
   width: 1024px;
-  height: 748px;
+  height: 768px;
   position: absolute;
-  top: 0;
+  top: -20px; /* hide status bar from mockups bc of real status bar on iPad */
   left: 0;
   z-index: 0;
 }
@@ -33,8 +33,8 @@ a {
 }
 
 @-webkit-keyframes pulse {
-  0% { opacity: 0.0; }
+  0% { opacity: 0.2; }
   10% { opacity: 1.0; }
-  70% { opacity: 0.0; }
-  100% { opacity: 0.0; }
+  70% { opacity: 0.2; }
+  100% { opacity: 0.2; }
 }
