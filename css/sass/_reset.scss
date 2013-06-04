@@ -1,0 +1,52 @@
+/* ============================================================================================== */
+/* Reset Styles                                                                                   */
+/* ============================================================================================== */
+
+* { @include box-sizing(border-box); }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+html, body {
+  margin: 0; padding: 0; width: 100%;
+}
+
+body {
+  font-size: 100%;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+
+audio, canvas, video {
+  @include inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden] {
+  display: none;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

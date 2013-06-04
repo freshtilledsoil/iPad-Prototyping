@@ -1,0 +1,232 @@
+/* ============================================================================================== */
+/* Base Form Styles                                                                               */
+/* ============================================================================================== */
+
+form {
+  margin: 0 0 #{$vertical-measure}em 0;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 #{$vertical-measure}em 0;
+  font-size: #{$modular-scale-up1}em;
+  border: 0;
+}
+
+label, input, button, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: normal;
+  text-transform: none;
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25em;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  @include inline-block;
+  height: $base-line-height;
+  padding: 0.1em 0.25em;
+  margin-bottom: #{$vertical-measure}em;
+  font-size: inherit;
+  line-height: inherit;
+  vertical-align: middle;
+}
+
+input, textarea {
+  width: 100%;
+}
+
+textarea {
+  height: auto;
+  overflow: auto;
+  vertical-align: top;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  background-color: $input-background-color;
+  border: 1px solid $input-border-color;
+
+  &:focus {
+    border-color: $input-focus-border-color;
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+  }
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0;
+  line-height: normal;
+}
+
+.radio,
+.checkbox {
+  min-height: $base-line-height;
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  li {
+    height: $base-line-height;
+    line-height: $base-line-height;
+
+    label {
+      font-size: #{$modular-scale-down1}em;
+    }
+  }
+}
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  float: left;
+  margin: 2px 6px 0 0;
+}
+
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+
+select,
+input[type="file"] {
+  height: #{$modular-scale-up2}em;
+  line-height: #{$modular-scale-up2}em;
+}
+
+select {
+  width: 100%;
+  border: 1px solid $input-border-color;
+  background-color: $input-background-color;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted lighten($darkest, 20%);
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+input,
+textarea {
+  &:-moz-placeholder {
+    color: $input-placeholder-text-color;
+  }
+  &:-ms-input-placeholder {
+    color: $input-placeholder-text-color;
+  }
+  &::-webkit-input-placeholder {
+    color: $input-placeholder-text-color;
+  }
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+
+
+
+// Disabled and invalid inputs =================================================================== /
+
+input[disabled],
+select[disabled],
+textarea[disabled],
+button[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly],
+button[readonly] {
+  cursor: not-allowed;
+  background-color: $input-disabled-background-color;
+}
+
+// Explicitly reset specific input type colors here
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+
+// HTML5 invalid states
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+  color: $input-invalid-color;
+  border-color: $input-invalid-color;
+  &:focus { border-color: darken($input-invalid-color, 20%); }
+}

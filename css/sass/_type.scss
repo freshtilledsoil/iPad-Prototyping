@@ -1,0 +1,213 @@
+/* ============================================================================================== */
+/* Base Typographic Styles                                                                        */
+/* ============================================================================================== */
+
+body {
+  color: $base-text-color;
+  font-family: $base-typeface;
+  line-height: $base-line-height;
+}
+
+p {
+  line-height: $base-line-height;
+  margin: 0 0 #{$vertical-measure}em 0;
+  @include hyphens(auto);
+}
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+cite { font-style: normal; }
+small { font-size: 80%; }
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 1px solid lighten($link-color, 20%);
+  @include transition(color 0.25s linear, border-bottom 0.25s linear);
+  &:hover {
+    color: darken($link-color, 10%);
+    border-bottom: 1px solid $link-color; }
+  &:focus { outline: thin dotted; }
+  &:active, &:hover { outline: 0; }
+}
+
+
+
+
+// headings ====================================================================================== /
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-family: $heading-typeface;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: $base-line-height;
+  text-rendering: optimizelegibility;
+}
+
+@mixin heading-first {
+  font-size: #{$modular-scale-up4}em;
+}
+
+@mixin heading-second {
+  font-size: #{$modular-scale-up3}em;
+}
+
+@mixin heading-third {
+  font-size: #{$modular-scale-up2}em;
+}
+
+@mixin heading-fourth {
+  font-size: #{$modular-scale-up1}em;
+}
+
+@mixin heading-fifth {
+  font-size: #{$modular-scale-base}em;
+}
+
+@mixin heading-sixth {
+  font-size: #{$modular-scale-down1}em;
+  color: lighten($base-text-color, 25%);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+
+
+
+// lists ========================================================================================= /
+ul, ol {
+  padding: 0;
+  margin: 0 0 #{$vertical-measure}em 1em;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+li {
+  line-height: $base-line-height;
+}
+
+@mixin unstyled-list { // usage: apply to <ul> class
+  list-style: none;
+  margin-left: 0;
+}
+
+@mixin inline-list {
+  list-style: none;
+  margin-left: 0;
+  & > li {
+    @include inline-block;
+    margin-left: 0.5em;
+    margin-right: 0.5em; }
+  & li:first-child { margin-left: 0; }
+  & li:last-child { margin-right: 0; }
+}
+
+dl {
+  margin: 0 0 #{$vertical-measure}em 0;
+}
+
+dt, dd {
+  line-height: $base-line-height;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dfn {
+    font-style: italic;
+}
+
+dd {
+  margin-left: 1em;
+}
+
+
+
+
+// code ========================================================================================= /
+code, pre {
+  color: $code-text-color;
+  font-family: $code-typeface;
+  direction: ltr;
+  text-align: left;
+  overflow: auto;
+  padding: 0 3px 2px;
+  @include hyphens(none);
+  @include tab-size($code-tab-size);
+}
+
+code {
+  background-color: $code-inline-background-color;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+pre {
+  background-color: $code-block-background-color;
+  line-height: $base-line-height;
+  display: block;
+  overflow-x: auto;
+  padding: #{$vertical-measure}em / 2;
+  margin: 0 0 #{$vertical-measure}em 0;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+
+  code {
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    white-space: pre;
+    white-space: pre-wrap;
+  }
+}
+
+
+
+
+// other ========================================================================================= /
+hr {
+  margin: #{$vertical-measure}em 0;
+  border: 0;
+  border-top: 1px solid $darkest;
+  border-bottom: 1px solid transparent;
+}
+
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted lighten($darkest, 80%);
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+@mixin blockquote { // apply to a <figure> wrapping a <blockquote>
+  padding-left: 1em;
+  margin: 0 0 #{$vertical-measure}em 0;
+  border-left: 1px solid $primary;
+  blockquote { margin: 0; }
+  figcaption {
+    font-size: #{$modular-scale-down1}em;
+    cite { font-style: italic; }
+    &:before { content: '\2014 \00A0'; }
+  }
+}

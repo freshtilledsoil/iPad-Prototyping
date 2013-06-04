@@ -1,0 +1,93 @@
+// =============================================================================================== /
+// Mixins                                                                                          /
+// =============================================================================================== /
+
+// extend CSS opacity to Internet Explorer 5-8 =================================================== /
+@mixin opacity ($value) {
+  opacity: $value;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=($value * 100))"; // IE8
+  filter: alpha(opacity=($value * 100)); // IE5-7
+  zoom: 1; // hacks IE requirement that element be positioned
+}
+
+
+
+
+// used to customize the width of the tab character ============================================== /
+// accepts an integer or inherit. default behavior is 8
+// see: https://developer.mozilla.org/en-US/docs/CSS/tab-size
+@mixin tab-size($value: 8) {
+  -moz-tab-size: $value;
+    -o-tab-size: $value;
+       tab-size: $value;
+}
+
+
+
+
+// tells the browser how to split words to improve text layout =================================== /
+// accepts none, manual, auto or inherit. default behavior is manual
+// see: https://developer.mozilla.org/en-US/docs/CSS/hyphens
+@mixin hyphens($value: manual) {
+  -webkit-hyphens: $value;
+     -moz-hyphens: $value;
+      -ms-hyphens: $value;
+          hyphens: $value;
+}
+
+
+
+
+// Fool-proof @font-face ========================================================================= /
+// http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/
+@mixin font-face($font-family, $file-path, $font-weight, $font-style) {
+  @font-face {
+    font-family: $font-family;
+      src: url('#{$file-path}.eot');
+      src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+           url('#{$file-path}.woff') format('woff'),
+           url('#{$file-path}.ttf') format('truetype'),
+           url('#{$file-path}.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+  // Chrome for Windows rendering fix: http://www.adtrak.co.uk/blog/font-face-chrome-rendering/
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @font-face {
+      font-family: $font-family;
+        src: url('#{$file-path}.svg##{$font-family}') format('svg');
+    }
+  }
+}
+
+// Usage Example
+// @include font-face(Ubuntu-Light, 'https://dl.dropbox.com/u/1220078/ubuntu-new/Ubuntu-Light-webfont', 300, normal);
+// @include font-face(Ubuntu-Light-Italic, 'https://dl.dropbox.com/u/1220078/ubuntu-new/Ubuntu-Light-Italic-webfont', 300, italic);
+// @include font-face(Ubuntu-Regular, 'https://dl.dropbox.com/u/1220078/ubuntu-new/Ubuntu-Regular-webfont', 400, normal);
+// @include font-face(Ubuntu-Regular-Italic, 'https://dl.dropbox.com/u/1220078/ubuntu-new/Ubuntu-Regular-Italic-webfont', 400, italic);
+// @include font-face(Ubuntu-Bold, 'https://dl.dropbox.com/u/1220078/ubuntu-new/Ubuntu-Bold-webfont', 700, normal);
+// @include font-face(Ubuntu-Bold-Italic, 'https://dl.dropbox.com/u/1220078/ubuntu-new/Ubuntu-Bold-Italic-webfont', 700, italic);
+//
+// @mixin Ubuntu-Light {
+//   font-family: 'Ubuntu-Light', arial, sans-serif;
+//   font-weight: 300; font-style: normal; }
+//
+// @mixin Ubuntu-Light-Italic {
+//   font-family: 'Ubuntu-Light-Italic', arial, sans-serif;
+//   font-weight: 300; font-style: italic; }
+//
+// @mixin Ubuntu-Regular {
+//   font-family: 'Ubuntu-Regular', arial, sans-serif;
+//   font-weight: 400; font-style: normal; }
+//
+// @mixin Ubuntu-Regular-Italic {
+//   font-family: 'Ubuntu-Regular-Italic', arial, sans-serif;
+//   font-weight: 400; font-style: italic; }
+//
+// @mixin Ubuntu-Bold {
+//   font-family: 'Ubuntu-Bold', arial, sans-serif;
+//   font-weight: 700; font-style: normal; }
+//
+// @mixin Ubuntu-Bold-Italic {
+//   font-family: 'Ubuntu-Bold-Italic', arial, sans-serif;
+//   font-weight: 700; font-style: italic; }
