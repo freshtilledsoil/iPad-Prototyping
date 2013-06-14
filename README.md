@@ -1,4 +1,4 @@
-iPad-Prototyping
+iPad Prototyping
 ================
 
-A framework for quick prototyping of iPad apps using image mockups.
+A framework for quick prototyping of iPad apps.
